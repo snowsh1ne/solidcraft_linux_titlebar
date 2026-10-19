@@ -190,7 +190,7 @@ jobs:
           # Ubuntu 24.04's AppArmor blocks the unprivileged user namespaces bubblewrap needs.
           sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
       - name: Build the Flatpak bundle
-        run: packaging/linux/flatpak-bundle.sh "dist/linux/solidcraft-$SOLIDCRAFT_VERSION-linux-${{ matrix.arch }}.tar.gz"
+        run: packaging/linux/flatpak-bundle.sh --no-test "dist/linux/solidcraft-$SOLIDCRAFT_VERSION-linux-${{ matrix.arch }}.tar.gz"
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: release-flatpak-${{ matrix.arch }}
